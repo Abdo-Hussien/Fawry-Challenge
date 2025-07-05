@@ -1,18 +1,54 @@
-## Getting Started
+# 🛒 Java E-Commerce System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A simple and extensible **Java-based e-commerce system** that demonstrates core OOP concepts including:
 
-## Folder Structure
+- Inheritance & Abstraction
+- Interfaces (`Shippable`, `Expirable`)
+- Composition (`Cart`, `Customer`, `CheckoutService`)
+- Edge case handling (stock limits, expired products, shipping calculations)
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## ✨ Features
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **Product Catalog** with different types: _Cheese, Biscuits, TV, Mobile Scratch Card_.
+- Some products:
+  - **Expire** (e.g., Cheese, Biscuits)
+  - **Require shipping** (e.g., Cheese, TV)
+- **Cart System** with quantity checks and stock validation.
+- **Checkout Flow**:
+  - Calculates subtotal and shipping fees
+  - Prevents checkout if:
+    - The cart is empty
+    - A product is expired
+    - A product is out of stock
+    - Customer has insufficient balance
+- **Shipping Service** for shippable products
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+---
 
-## Dependency Management
+## 📦 Classes Overview
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### 📁 `Product` (abstract class)
+- `name`, `price`, `quantity`
+- Subclasses: `Cheese`, `Biscuits`, `TV`, `MobileScratchCard`, `Mobile`
+
+### 🧾 Interfaces
+- **`Shippable`** → requires `getName()` and `getWeight()`
+- **`Expirable`** → requires `isExpired()`
+
+### 🧍‍♂️ `Customer`
+- Tracks customer `name` and `balance`
+
+### 🛒 `Cart`
+- Adds items to the cart
+- Validates quantity
+- Used in checkout
+
+### 📦 `ShippingService`
+- Prints shipping notice with total package weight
+
+### 💳 `CheckoutService`
+- Handles the checkout flow
+- Applies all validation rules and prints receipt
+
